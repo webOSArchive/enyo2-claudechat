@@ -1,0 +1,17 @@
+{
+    "id": "org.webosarchive.claudechat",
+    "version": "1.0.0",
+    "vendor": "WebOS Archive",
+    "type": "web",
+    "main": "index.html",
+    "title": "Claude Chat",
+    "icon": "icon.png",
+    "uiRevision": "2",
+    "universalSearch": {
+        "search": {
+            "displayName": "Ask Claude",
+            "url": "org.webosarchive.claudechat",
+            "launchParam": "query"
+        }
+    }
+}

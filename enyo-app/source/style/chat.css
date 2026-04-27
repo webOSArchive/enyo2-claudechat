@@ -1,0 +1,244 @@
+/* ── Base: prevent white flash before Enyo paints ────────────────────────── */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    overflow: hidden;
+}
+
+/* ── Chat bubbles ──────────────────────────────────────────── */
+
+.message-list {
+    padding: 8px 0;
+}
+
+.message-item {
+    display: block;
+    padding: 5px 12px;
+    overflow: hidden; /* contain the inline-block bubble */
+}
+
+.message-item.message-user {
+    text-align: right;
+}
+
+.message-item.message-assistant {
+    text-align: left;
+}
+
+.message-bubble {
+    display: inline-block;
+    padding: 10px 14px;
+    -webkit-border-radius: 14px;
+    border-radius: 14px;
+    max-width: 80%;
+    text-align: left;
+    word-wrap: break-word;
+    white-space: pre-wrap;  /* preserve newlines in responses */
+    font-size: 15px;
+    line-height: 1.45;
+    vertical-align: top;
+}
+
+.bubble-user {
+    background-color: #1a5a9a;
+    color: #ffffff;
+    -webkit-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.bubble-assistant {
+    background-color: #2e2e2e;
+    color: #e4e4e4;
+    -webkit-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.bubble-thinking {
+    color: #888888;
+    font-style: italic;
+}
+
+/* ── Chat scroller ────────────────────────────────────────── */
+
+.chat-scroller {
+    background-color: #1a1a1a;
+}
+
+/* ── Toolbar extras ───────────────────────────────────────── */
+
+.toolbar-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 0 10px;
+}
+
+.toolbar-btn-right {
+    float: right;
+}
+
+/* ── Input area ───────────────────────────────────────────── */
+
+.input-area {
+    padding: 8px;
+    background-color: #222222;
+    border-top: 1px solid #444444;
+}
+
+.message-input {
+    min-height: 64px;
+    max-height: 128px;
+    font-size: 15px;
+    line-height: 1.4;
+    margin-right: 8px;
+    resize: none;
+}
+
+.send-btn {
+    -webkit-align-self: flex-end;
+    align-self: flex-end;
+    min-width: 70px;
+}
+
+/* ── Settings panel ───────────────────────────────────────── */
+
+.settings-view {
+    background-color: #1a1a1a;
+}
+
+.settings-body {
+    padding: 16px 20px 40px 20px;
+}
+
+.settings-section-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.settings-label {
+    display: block;
+    font-size: 13px;
+    color: #888888;
+    margin-top: 14px;
+    margin-bottom: 4px;
+}
+
+.settings-input {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.settings-select {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #333333;
+    color: #e0e0e0;
+    border: 1px solid #555555;
+    padding: 6px;
+    font-size: 14px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.settings-textarea {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 90px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.settings-error {
+    color: #ff6b6b;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.btn-primary {
+    width: 100%;
+    margin-top: 16px;
+    background-color: #1a5a9a;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.btn-action {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.btn-danger {
+    width: 100%;
+    margin-top: 8px;
+    background-color: #7a1a1a;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.settings-divider {
+    border: none;
+    border-top: 1px solid #333333;
+    margin: 24px 0 8px 0;
+}
+
+.settings-about {
+    font-size: 12px;
+    color: #555555;
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* ── History view ─────────────────────────────────────────── */
+
+.history-view {
+    background-color: #1a1a1a;
+}
+
+.history-list {
+    padding: 8px 0;
+}
+
+.history-item {
+    display: block;
+    padding: 14px 18px;
+    border-bottom: 1px solid #2a2a2a;
+    cursor: pointer;
+}
+
+.history-item:active {
+    background-color: #252525;
+}
+
+.history-date {
+    font-size: 12px;
+    color: #777777;
+    margin-bottom: 5px;
+}
+
+.history-preview {
+    font-size: 15px;
+    color: #cccccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-empty {
+    padding: 60px 20px;
+    text-align: center;
+    color: #555555;
+    font-size: 15px;
+}

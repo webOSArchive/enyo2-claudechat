@@ -1,0 +1,18 @@
+{
+  "name": "org.webosarchive.claudechat",
+  "description": "Claude Chat for webOS",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "serve": "http-server -p 8282 -a 0.0.0.0 --cors -c-1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-http-server": "~1.1.0"
+  }
+}

@@ -1,0 +1,9 @@
+enyo.depends(
+    "$lib/onyx",
+    "$lib/layout",
+    "style/package.js",
+    "data/package.js",
+    "services/package.js",
+    "views/package.js",
+    "app.js"
+);
