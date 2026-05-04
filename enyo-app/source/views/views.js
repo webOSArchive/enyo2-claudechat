@@ -169,7 +169,7 @@ enyo.kind({
                 {tag: "div", classes: "settings-section-header", content: "Claude API"},
 
                 {tag: "label", classes: "settings-label", content: "API Key"},
-                {name: "apiKeyInput", kind: "onyx.Input", type: "password",
+                {name: "apiKeyInput", kind: "onyx.Input", type: "text",
                  placeholder: "sk-ant-api03-...", classes: "settings-input"},
 
                 {tag: "label", classes: "settings-label", content: "Model"},
