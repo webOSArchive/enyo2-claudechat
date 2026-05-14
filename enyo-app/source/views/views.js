@@ -304,9 +304,9 @@ enyo.kind({
          ]},
         {classes: "input-area", components: [
             {kind: "enyo.FittableColumns", components: [
-                {name: "messageInput", kind: "enyo.TextArea",
+                {name: "messageInput", kind: "onyx.Input",
                  fit: true,
-                 placeholder: "Type a message\u2026  (Enter sends, Shift+Enter = new line)",
+                 placeholder: "Type a message\u2026",
                  classes: "message-input",
                  onkeydown: "inputKeyDown",
                  attributes: {autocorrect: "on", spellcheck: "true", autocapitalize: "sentence"}},
@@ -383,8 +383,7 @@ enyo.kind({
     },
 
     inputKeyDown: function(sender, event) {
-        // Enter alone sends; Shift+Enter inserts a newline
-        if (event.keyCode === 13 && !event.shiftKey) {
+        if (event.keyCode === 13) {
             event.preventDefault();
             this.sendMessage();
             return true;
