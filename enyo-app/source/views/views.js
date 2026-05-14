@@ -469,6 +469,7 @@ enyo.kind({
     name: "App.RootView",
     kind: "enyo.Panels",
     arrangerKind: "CardArranger",
+    draggable: false,
     fit: true,
     components: [
         {name: "chatView",     kind: "App.ChatView",
