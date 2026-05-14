@@ -227,6 +227,30 @@ html, body {
     margin-top: 16px;
 }
 
+/* ── Update popup ─────────────────────────────────────────── */
+
+.update-popup {
+    padding: 20px;
+    max-width: 280px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.update-popup-msg {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    white-space: pre-wrap;
+}
+
+.update-popup-btn {
+    width: 100%;
+    color: #f2f2f2;
+    background-color: #555656;
+}
+
 /* ── History view ─────────────────────────────────────────── */
 
 .history-view {

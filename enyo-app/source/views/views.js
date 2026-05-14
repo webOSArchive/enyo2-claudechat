@@ -308,6 +308,13 @@ enyo.kind({
         onShowHistory: ""
     },
     components: [
+        {kind: "wosa.updater", name: "updater", onUpdateFound: "handleUpdateFound"},
+        {kind: "onyx.Popup", name: "updatePopup", centered: true, modal: true,
+         autoDismiss: false, classes: "update-popup", components: [
+            {name: "updateMessage", classes: "update-popup-msg", allowHtml: false},
+            {kind: "onyx.Button", content: "OK", classes: "update-popup-btn",
+             ontap: "closeUpdatePopup"}
+        ]},
         {kind: "onyx.Toolbar", components: [
             {tag: "span", classes: "toolbar-title", content: "Claude Chat"},
             {kind: "onyx.Button", content: "Settings",
@@ -351,6 +358,26 @@ enyo.kind({
     rendered: function() {
         this.inherited(arguments);
         this.refreshMessages();
+        var self = this;
+        if (typeof device !== "undefined" && device.platform) {
+            this.$.updater.CheckForUpdate("Claude Chat");
+        } else {
+            document.addEventListener("deviceready", function() {
+                self.$.updater.CheckForUpdate("Claude Chat");
+            }, false);
+        }
+    },
+
+    handleUpdateFound: function() {
+        this.$.updateMessage.setContent(
+            "A new version of Claude Chat is available!\n\n" +
+            this.$.updater.UpdateMessage + "\n\nVisit App Museum II to update."
+        );
+        this.$.updatePopup.show();
+    },
+
+    closeUpdatePopup: function() {
+        this.$.updatePopup.hide();
     },
 
     newChat: function() {
