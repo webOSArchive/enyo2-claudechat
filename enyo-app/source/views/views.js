@@ -1,3 +1,29 @@
+// Contenteditable div used as the message input — gives us spellcheck
+// replacement support that <input> lacks in webOS WebKit 534.
+enyo.kind({
+    name: "App.MessageInput",
+    tag: "div",
+    attributes: {
+        contenteditable: "true",
+        spellcheck: "true",
+        autocorrect: "on",
+        autocapitalize: "sentence",
+        tabindex: "0"
+    },
+    getValue: function() {
+        var node = this.hasNode();
+        if (!node) { return ""; }
+        var t = (node.innerText !== undefined) ? node.innerText : node.textContent;
+        return t.replace(/\n$/, "");
+    },
+    setValue: function(val) {
+        var node = this.hasNode();
+        if (!node) { return; }
+        node.innerHTML = "";
+        if (val) { node.innerText = val; }
+    }
+});
+
 // Renders a single chat message bubble (user or assistant)
 enyo.kind({
     name: "App.MessageItem",
@@ -304,13 +330,10 @@ enyo.kind({
          ]},
         {classes: "input-area", components: [
             {kind: "enyo.FittableColumns", components: [
-                {name: "messageInput", kind: "onyx.Input",
+                {name: "messageInput", kind: "App.MessageInput",
                  fit: true,
-                 type: "text",
-                 placeholder: "Type a message\u2026",
                  classes: "message-input",
-                 onkeydown: "inputKeyDown",
-                 attributes: {autocorrect: "on", spellcheck: "true", autocapitalize: "sentence"}},
+                 onkeydown: "inputKeyDown"},
                 {name: "sendBtn", kind: "onyx.Button", content: "Send",
                  classes: "send-btn", ontap: "sendMessage"}
             ]}
@@ -383,7 +406,7 @@ enyo.kind({
     },
 
     inputKeyDown: function(sender, event) {
-        if (event.keyCode === 13) {
+        if (event.keyCode === 13 && !event.shiftKey) {
             event.preventDefault();
             this.sendMessage();
             return true;
