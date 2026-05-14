@@ -178,7 +178,8 @@ enyo.kind({
                 {tag: "label", classes: "settings-label", content: "System Prompt"},
                 {name: "systemPromptInput", kind: "enyo.TextArea",
                  placeholder: "Custom instructions for Claude...",
-                 classes: "settings-textarea"},
+                 classes: "settings-textarea",
+                 attributes: {autocorrect: "on", spellcheck: "true", autocapitalize: "sentence"}},
 
                 {name: "saveError", tag: "div",
                  classes: "settings-error", showing: false,
@@ -307,7 +308,8 @@ enyo.kind({
                  fit: true,
                  placeholder: "Type a message\u2026  (Enter sends, Shift+Enter = new line)",
                  classes: "message-input",
-                 onkeydown: "inputKeyDown"},
+                 onkeydown: "inputKeyDown",
+                 attributes: {autocorrect: "on", spellcheck: "true", autocapitalize: "sentence"}},
                 {name: "sendBtn", kind: "onyx.Button", content: "Send",
                  classes: "send-btn", ontap: "sendMessage"}
             ]}
