@@ -306,9 +306,11 @@ enyo.kind({
             {kind: "enyo.FittableColumns", components: [
                 {name: "messageInput", kind: "onyx.Input",
                  fit: true,
+                 type: "text",
                  placeholder: "Type a message\u2026",
                  classes: "message-input",
                  onkeydown: "inputKeyDown",
+                 ontap: "inputTapped",
                  attributes: {autocorrect: "on", spellcheck: "true", autocapitalize: "sentence"}},
                 {name: "sendBtn", kind: "onyx.Button", content: "Send",
                  classes: "send-btn", ontap: "sendMessage"}
@@ -380,6 +382,13 @@ enyo.kind({
         setTimeout(function() {
             self.$.scroller.scrollToBottom();
         }, 60);
+    },
+
+    inputTapped: function(sender, event) {
+        if (window.PalmSystem && PalmSystem.simulateMouseClick) {
+            PalmSystem.simulateMouseClick(event.pageX, event.pageY, true);
+            PalmSystem.simulateMouseClick(event.pageX, event.pageY, false);
+        }
     },
 
     inputKeyDown: function(sender, event) {
