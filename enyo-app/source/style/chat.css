@@ -99,6 +99,9 @@ html, body {
     white-space: pre-wrap;
     outline: none;
     cursor: text;
+    -webkit-user-select: text;
+    user-select: text;
+    -webkit-user-modify: read-write;
     padding: 8px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
