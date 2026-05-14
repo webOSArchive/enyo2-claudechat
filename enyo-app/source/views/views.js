@@ -319,6 +319,7 @@ enyo.kind({
     ],
 
     sending: false,
+    _wordCompletionActive: false,
 
     create: function() {
         this.inherited(arguments);
@@ -330,6 +331,15 @@ enyo.kind({
     rendered: function() {
         this.inherited(arguments);
         this.refreshMessages();
+        if (window.PalmSystem && PalmSystem.simulateMouseClick) {
+            var self = this;
+            var node = this.$.messageInput.hasNode();
+            if (node) {
+                node.addEventListener('blur', function() {
+                    self._wordCompletionActive = false;
+                });
+            }
+        }
     },
 
     newChat: function() {
@@ -385,7 +395,8 @@ enyo.kind({
     },
 
     inputTapped: function(sender, event) {
-        if (window.PalmSystem && PalmSystem.simulateMouseClick) {
+        if (window.PalmSystem && PalmSystem.simulateMouseClick && !this._wordCompletionActive) {
+            this._wordCompletionActive = true;
             PalmSystem.simulateMouseClick(event.pageX, event.pageY, true);
             PalmSystem.simulateMouseClick(event.pageX, event.pageY, false);
         }
